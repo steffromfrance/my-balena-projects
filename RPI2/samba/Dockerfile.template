@@ -1,0 +1,12 @@
+#Samba Service with mount of an external USb drive 
+FROM balenalib/%%BALENA_ARCH%%-alpine:latest-build
+
+RUN install_packages hdparm
+ENV UDEV=1
+ENV INITSYSTEM on
+
+#Mounting the SDA1 USB Disk using fstab
+RUN echo "UUID=903a6a0a-30bb-4dee-a1f8-69622fef703d /media/HDD1000G ext4 noatime,nofail 0 0" >> /etc/fstab
+#mkdir -p /media/HDD1000G && mount /media/HDD1000G
+
+ENTRYPOINT ["/bin/sleep", "86400"]
