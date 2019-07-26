@@ -1,0 +1,6 @@
+version: '2'
+services:
+  data:
+    build: ./data
+    volume:
+      - "/HDD1000G"
