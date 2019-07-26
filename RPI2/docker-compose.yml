@@ -1,6 +1,10 @@
 version: '2'
 services:
-  #The Data Container that will expose DATA Containers
+  #The data Container will only act as a DATA Container that will expose DATA to others
   data:
     build: ./data    
     privileged: true
+  #Simple console Container to test stuff
+  console:
+    build: ./console
+    #volumes_from: ["data"]

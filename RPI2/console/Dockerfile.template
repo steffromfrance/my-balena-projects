@@ -1,0 +1,4 @@
+#Simple console Service to test stuff inside the Docker system
+#FROM balenalib/%%BALENA_ARCH%%-debian:latest-run
+FROM balenalib/%%BALENA_ARCH%%-alpine:latest-run
+ENTRYPOINT ["/bin/sleep", "31536000"]
