@@ -5,7 +5,7 @@ COPY ./mount-usb.sh /mount-usb.sh
 RUN chmod +x /mount-usb.sh
 
 ENV UDEV=1
-ENV INITSYSTEM on
+#ENV INITSYSTEM on
 
 WORKDIR /HDD1000G
 VOLUME /HDD1000G

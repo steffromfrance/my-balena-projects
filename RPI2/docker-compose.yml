@@ -1,6 +1,6 @@
 version: '2'
 services:
+  #The Data Container that will expose DATA Containers
   data:
-    build: ./data
-    volume:
-      - "/HDD1000G"
+    build: ./data    
+    privileged: true
