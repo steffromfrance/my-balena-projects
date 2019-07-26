@@ -2,9 +2,11 @@ version: '2'
 services:
   #The data Container will only act as a DATA Container that will expose DATA to others
   data:
+    container_name: my-data
     build: ./data    
     privileged: true
   #Simple console Container to test stuff
   console:
+    container_name: "my-console"
     build: ./console
-    #volumes_from: ["data"]
+    volumes_from: ["my-data"]
