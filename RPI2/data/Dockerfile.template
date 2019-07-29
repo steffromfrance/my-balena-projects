@@ -7,11 +7,10 @@ RUN chmod +x /mount-usb.sh
 ENV UDEV=1
 #ENV INITSYSTEM on
 
-WORKDIR /HDD1000G
-VOLUME /HDD1000G
+VOLUME /mnt/HDD1000G
 
 #Mounting the SDA1 USB Disk using fstab
-RUN echo "UUID=903a6a0a-30bb-4dee-a1f8-69622fef703d /HDD1000G ext4 noatime,nofail 0 0" >> /etc/fstab
-# run in script sudo mkdir -p /HDD1000G && mount /HDD1000G
+RUN echo "UUID=903a6a0a-30bb-4dee-a1f8-69622fef703d /mnt/HDD1000G ext4 noatime,nofail 0 0" >> /etc/fstab
+# run in script sudo mkdir -p /mnt/HDD1000G && mount /mnt/HDD1000G
 
 CMD ["/bin/bash","/mount-usb.sh"]
