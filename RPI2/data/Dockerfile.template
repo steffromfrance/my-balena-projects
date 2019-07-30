@@ -1,16 +1,17 @@
 #Simple Service Service with mount of an external USb drive 
 FROM balenalib/%%BALENA_ARCH%%-alpine:latest-run
 
-COPY ./mount-usb.sh /mount-usb.sh
-RUN chmod +x /mount-usb.sh
+COPY ./mount-and-share.sh /mount-and-share.sh
+RUN chmod +x /mount-and-share.sh
+
 
 ENV UDEV=1
 #ENV INITSYSTEM on
 
-VOLUME /mnt/HDD1000G
+#VOLUME /mnt/HDD1000G
 
 #Mounting the SDA1 USB Disk using fstab
-RUN echo "UUID=903a6a0a-30bb-4dee-a1f8-69622fef703d /mnt/HDD1000G ext4 noatime,nofail 0 0" >> /etc/fstab
+#RUN echo "UUID=903a6a0a-30bb-4dee-a1f8-69622fef703d /mnt/HDD1000G ext4 noatime,nofail 0 0" >> /etc/fstab
 # run in script sudo mkdir -p /mnt/HDD1000G && mount /mnt/HDD1000G
 
-CMD ["/bin/bash","/mount-usb.sh"]
+CMD ["/bin/bash","/mount-and-share.sh"]
