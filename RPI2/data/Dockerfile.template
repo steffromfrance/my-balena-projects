@@ -1,17 +1,24 @@
 #Simple Service Service with mount of an external USb drive 
-FROM balenalib/%%BALENA_ARCH%%-alpine:latest-run
+#FROM balenalib/%%BALENA_ARCH%%-alpine:latest-run
+FROM balenalib/%%BALENA_ARCH%%-debian:latest-run
+
+RUN install_packages hdparm samba smbclient 
+
+#copy the new share and add it to the samba configuration file
+COPY smb_data_share.conf /tmp/
+RUN cat /tmp/smb_data_share.conf >> /etc/samba/smb.conf
 
 COPY ./mount-and-share.sh /mount-and-share.sh
 RUN chmod +x /mount-and-share.sh
 
-
 ENV UDEV=1
 #ENV INITSYSTEM on
 
-#VOLUME /mnt/HDD1000G
+# add a non-root user and group called "rio" with no password, no home dir, no shell, and gid/uid set to 1000
+#RUN addgroup -gid 1000 pi && adduser --disabled-login --no-create-home --group pi --shell /bin/false --uid 1000 pi
 
-#Mounting the SDA1 USB Disk using fstab
-#RUN echo "UUID=903a6a0a-30bb-4dee-a1f8-69622fef703d /mnt/HDD1000G ext4 noatime,nofail 0 0" >> /etc/fstab
-# run in script sudo mkdir -p /mnt/HDD1000G && mount /mnt/HDD1000G
+# create a samba user matching our user from above with a very simple password ("pi")
+#RUN echo -e "pi\npi" | smbpasswd -a -s 
+
 
 CMD ["/bin/bash","/mount-and-share.sh"]
