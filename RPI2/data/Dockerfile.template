@@ -1,15 +1,15 @@
 #Simple Service Service with mount of an external USb drive 
-#FROM balenalib/%%BALENA_ARCH%%-alpine:latest-run
-FROM balenalib/%%BALENA_ARCH%%-debian:latest-run
+FROM balenalib/%%BALENA_ARCH%%-alpine:latest-run
+#FROM balenalib/%%BALENA_ARCH%%-debian:latest-run
 
-RUN install_packages hdparm samba smbclient 
+RUN install_packages hdparm samba tmux
 
 #copy the new share and add it to the samba configuration file
 COPY smb_data_share.conf /tmp/
 RUN cat /tmp/smb_data_share.conf >> /etc/samba/smb.conf
 
-COPY ./mount-and-share.sh /mount-and-share.sh
-RUN chmod +x /mount-and-share.sh
+COPY *.sh /
+RUN chmod +x /*.sh
 
 ENV UDEV=1
 #ENV INITSYSTEM on
@@ -21,4 +21,4 @@ ENV UDEV=1
 #RUN echo -e "pi\npi" | smbpasswd -a -s 
 
 
-CMD ["/bin/bash","/mount-and-share.sh"]
+CMD ["/bin/bash","/start.sh"]

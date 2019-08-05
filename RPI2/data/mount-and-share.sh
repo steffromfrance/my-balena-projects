@@ -25,7 +25,7 @@ fi
 echo "STEP 2: Starting samba daemon: this will create samba share //<IP address raspberry pi>/share"
 echo "        sharing the $ext_mnt_partition1 folder"
 echo "   comment=path_ext_mnt_partition1" >> /etc/samba/smb.conf
-#testparm --suppress-prompt 
+testparm --suppress-prompt 
 #service smbd start
 
 echo -e "******* Listing the Samba shared services *******************"
@@ -34,11 +34,4 @@ echo -e "************************************************************\n"
 #/usr/sbin/rc-update add samba
 #/usr/sbin/rc-service samba start
 
-echo -e "Service ready to serve and sleeping forever...."
-while true; do
-   # every hour a "zzz" is put into the log files.
-   echo "Sleeping for ten more hours"
-   sleep 36000
-done
-echo "Exiting....."
-
+echo "Exiting the mount-and-share.sh script"
