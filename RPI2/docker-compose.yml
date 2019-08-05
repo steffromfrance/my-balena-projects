@@ -5,6 +5,9 @@ services:
     container_name: data
     build: ./data    
     privileged: true
+    ports:
+      - "139:139"
+      - "445:445"
   #Simple console Container to test stuff
   console:
     container_name: "console-alpine"
