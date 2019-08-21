@@ -2,7 +2,7 @@
 echo "start.sh script"
 #/usr/sbin/rc-update add samba
 #/usr/sbin/rc-service samba start
-/bin/bash /mount-and-share.sh
+/bin/bash /src/mount-and-share.sh
 
 
 while true; do
