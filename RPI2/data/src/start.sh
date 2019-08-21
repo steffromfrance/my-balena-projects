@@ -1,7 +1,5 @@
 #!/usr/bin/bash
 echo "start.sh script"
-#/usr/sbin/rc-update add samba
-#/usr/sbin/rc-service samba start
 /bin/bash /src/mount-and-share.sh
 
 
