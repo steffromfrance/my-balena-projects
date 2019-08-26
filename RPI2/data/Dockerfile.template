@@ -2,14 +2,15 @@
 FROM balenalib/%%BALENA_ARCH%%-alpine:latest-run
 #FROM balenalib/%%BALENA_ARCH%%-debian:latest-run
 
-RUN install_packages hdparm samba tmux
+RUN install_packages hdparm samba supervisor util-linux
 
 #copy the new share and add it to the samba configuration file
 #COPY smb_data_share.conf /tmp/
 #RUN cat /tmp/smb_data_share.conf >> /etc/samba/smb.conf
 
 COPY /src /src
-RUN chmod +x /src/*.sh
+COPY /src/smb_passwordless.conf /etc/samba/samba.conf
+#RUN chmod +x /src/*.sh
 
 ENV UDEV=1
 #ENV INITSYSTEM on

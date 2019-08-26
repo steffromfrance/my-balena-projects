@@ -25,7 +25,7 @@ fi
 echo "STEP 2: Starting samba daemon: this will create samba share //<IP address raspberry pi>/share"
 echo "        sharing the $ext_mnt_partition1 folder"
 echo "   comment=path_ext_mnt_partition1" >> /etc/samba/smb.conf
-testparm --suppress-prompt 
+testparm --suppress-prompt -c /etc/samba/samba.conf
 #service smbd start
 
 echo -e "******* Listing the Samba shared services *******************"
@@ -33,5 +33,8 @@ echo -e "******* Listing the Samba shared services *******************"
 echo -e "************************************************************\n"
 #/usr/sbin/rc-update add samba
 #/usr/sbin/rc-service samba start
+whereis smbd
+#smbd: /usr/sbin/smbd
 
+whereis supervisord
 echo "Exiting the mount-and-share.sh script"
