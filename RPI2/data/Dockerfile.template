@@ -9,7 +9,9 @@ RUN install_packages hdparm samba supervisor util-linux
 #RUN cat /tmp/smb_data_share.conf >> /etc/samba/smb.conf
 
 COPY /src /src
-COPY /src/smb_passwordless.conf /etc/samba/samba.conf
+COPY /etc/samba/smb_passwordless.conf /etc/samba/samba.conf
+COPY /etc/samba/smbusers /etc/samba/smbusers
+
 #RUN chmod +x /src/*.sh
 
 ENV UDEV=1
