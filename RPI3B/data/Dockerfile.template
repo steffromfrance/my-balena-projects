@@ -2,14 +2,21 @@
 FROM balenalib/%%BALENA_ARCH%%-alpine:latest-run
 #FROM balenalib/%%BALENA_ARCH%%-debian:latest-run
 
+<<<<<<< HEAD:RPI2/data/Dockerfile.template
 RUN install_packages hdparm samba tmux nfs-utils nmap
+=======
+RUN install_packages hdparm samba supervisor util-linux
+>>>>>>> cc793f87d670c4cb997304b95e5984a4e4eb791b:RPI3B/data/Dockerfile.template
 
 #copy the new share and add it to the samba configuration file
 #COPY smb_data_share.conf /tmp/
 #RUN cat /tmp/smb_data_share.conf >> /etc/samba/smb.conf
 
 COPY /src /src
-RUN chmod +x /src/*.sh
+COPY /etc/samba/smb_passwordless.conf /etc/samba/samba.conf
+COPY /etc/samba/smbusers /etc/samba/smbusers
+
+#RUN chmod +x /src/*.sh
 
 ENV UDEV=1
 #ENV INITSYSTEM on
