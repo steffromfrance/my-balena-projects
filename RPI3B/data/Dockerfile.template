@@ -2,11 +2,7 @@
 FROM balenalib/%%BALENA_ARCH%%-alpine:latest-run
 #FROM balenalib/%%BALENA_ARCH%%-debian:latest-run
 
-<<<<<<< HEAD:RPI2/data/Dockerfile.template
-RUN install_packages hdparm samba tmux nfs-utils nmap
-=======
-RUN install_packages hdparm samba supervisor util-linux
->>>>>>> cc793f87d670c4cb997304b95e5984a4e4eb791b:RPI3B/data/Dockerfile.template
+RUN install_packages hdparm samba supervisor util-linux nfs-utils nmap
 
 #copy the new share and add it to the samba configuration file
 #COPY smb_data_share.conf /tmp/
