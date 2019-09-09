@@ -2,6 +2,6 @@
 #FROM balenalib/%%BALENA_ARCH%%-debian:latest-run
 FROM balenalib/%%BALENA_ARCH%%-alpine:latest-run
 
-RUN install_packages samba mc
+RUN install_packages samba mc openssh nmap nfs-utils
 
 ENTRYPOINT ["/bin/sleep", "31536000"]

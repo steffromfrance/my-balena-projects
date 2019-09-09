@@ -34,4 +34,10 @@ echo -e "************************************************************\n"
 #/usr/sbin/rc-update add samba
 #/usr/sbin/rc-service samba start
 
+echo -e "******* Mounting NFS mount from the Shared HDD1000G *******************"
+#smbclient -L 127.0.0.1
+showmount 192.168.0.10:
+echo -e "************************************************************\n"
+
+
 echo "Exiting the mount-and-share.sh script"

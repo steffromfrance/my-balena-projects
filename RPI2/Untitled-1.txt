@@ -1,0 +1,9 @@
+--BalenaVloud / Docker usefull command
+Balena Clou RPI3B  
+balena logs 2dc0e73  (Logs du RPI3) 
+balena ssh 2dc0 (connecting to the RPI3B Dat-Frog host devive)
+balena exec -it $(balena ps --filter name=data --format='{{.ID}}') bash
+balena inspect $(balena ps --filter name=data --format='{{.ID}}')
+balena exec -it $(balena ps --filter name=console --format='{{.ID}}') bash
+balena logs $(balena ps --filter name=resin_supervisor --format='{{.ID}}')
+Powershell -Command "balena ssh 2dc0; echo Finished  ---  PressAKeyToExit; pause"

@@ -2,7 +2,7 @@
 FROM balenalib/%%BALENA_ARCH%%-alpine:latest-run
 #FROM balenalib/%%BALENA_ARCH%%-debian:latest-run
 
-RUN install_packages hdparm samba tmux
+RUN install_packages hdparm samba tmux nfs-utils nmap
 
 #copy the new share and add it to the samba configuration file
 #COPY smb_data_share.conf /tmp/
